@@ -1,0 +1,16 @@
+
+
+
+body{background-color:Azure; font:81.3% "Georgia",times,serif; }
+
+#headerwrap{width:100%; background:url("../images/headerbg.jpg") repeat-x 0 0; height:117px;}
+#mainheader{padding:35px 0 0 0; color:#2f2f2f; text-shadow:0 0 1px #fff;}
+.logo{float:left; margin:0 10px 0 0; -webkit-transition:-webkit-transform 0.4s ease-out; -moz-transition:-moz-transform 0.4s ease-out; transition:transform 0.4s ease-out;}
+.logo:hover{cursor:pointer; -webkit-transform:rotate(360deg); -moz-transform:rotate(360deg); transform:rotate(360deg);}
+#websitetitle{float:left; margin:-8px 0 0 0;}
+#websitetitle h1{font-size:2.538em; font-weight:normal;}
+#websitetitle h2{font:1.462em "Georgia"; font-style:italic; font-weight:normal; margin:-3px 0 0 0;}
+#mainheader nav{float:right; font:1.615em "Ubuntu",arial,; margin:8px 0 0 0;}
+#mainheader nav li{list-style-type:none; display:inline; margin:0 0 0 65px;}
+#mainheader a, #mainheader:visited{color:#2f2f2f;}
+#mainheader a:hover{text-decoration:none; color:#7e7e7e;}
