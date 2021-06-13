@@ -23,20 +23,10 @@ public class DecreasePatients extends HttpServlet {
 		 try {
 			 
 			 HttpSession session=request.getSession(false);  
-			 System.out.println(session.getAttribute("hospital"));
-
-			 System.out.println(session.getAttribute("doctor"));
-
-			 System.out.println(session.getAttribute("nopat"));
-
-			 System.out.println(session.getAttribute("currentpatient"));
-			 
-			 System.out.println(session.getAttribute("phonenumber"));
-			
-			 	java.sql.Connection con;
-		    	//Class.forName("org.gjt.mm.mysql.Driver");
-		    	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/doctorsdb", "root", "Maaz@Khan777");
-		   		// out.println (db+ "database successfully opened.");
+			java.sql.Connection con;
+		    	
+		    	con = DriverManager.getConnection("jdbc:mysql://localhost:3306/doctorsdb", "root", "root");
+		   		
 		    	String query1="delete FROM appointment where HosName='"+ session.getAttribute("HosName") +"' and DocName='"+ session.getAttribute("DocName") +"' and phn='"+ session.getAttribute("phn") +"'";
 			    PreparedStatement pst=con.prepareStatement(query1);
 	   		  	int i=pst.executeUpdate(query1);
@@ -46,7 +36,7 @@ public class DecreasePatients extends HttpServlet {
 	        		  
 	   		  		String sq  ="SELECT pn,pp,phn,count(AppNo) FROM appointment where HosName='"+ session.getAttribute("HosName") +"' and DocName='"+ session.getAttribute("DocName") +"' order by AppNo";
 
-	   		  		//String sql2="SELECT count(AppointmentNumber),pn,pp,phnNumber FROM appointment where hn='"+ session.getAttribute("hospital") +"' and dn='"+session.getAttribute("doctor") +"' order by AppointmentNumber asc";
+	   		  		
 	   		  		pst=con.prepareStatement(sq);
 	   		  		ResultSet rs1=pst.executeQuery();
       		  
@@ -57,9 +47,7 @@ public class DecreasePatients extends HttpServlet {
 	   		  			session.setAttribute("phn",rs1.getString(3));
 	   		  			session.setAttribute("nopat",rs1.getString(4));
 	   		  			
-	   		  			//session.setAttribute("nopat",rs1.getString(1) );
-	   		  			//session.setAttribute("currentpatient", "NAME : "+rs1.getString(2)+"--- PROBLEM : "+rs1.getString(3)+"--- PHoNE NO : "+rs1.getString(4));
-	   		  			//session.setAttribute("phonenumber",rs1.getString(4) );
+	   		  			
 	   		  			RequestDispatcher requestDispatcher = request.getRequestDispatcher("docprofile.jsp");
 	   		  			requestDispatcher.forward(request, response);
 	   		  		}
@@ -70,9 +58,7 @@ public class DecreasePatients extends HttpServlet {
 	   		  			session.setAttribute("phn","--NONE--");
 	   		  			session.setAttribute("nopat","0");
 	   		  			
-	   		  			//session.setAttribute("nopat","0");
-	   		  			//session.setAttribute("currentpatient","--NONE--");
-	   		  			//session.setAttribute("phonenumber","0" );
+	   		  			
 	   		  			RequestDispatcher requestDispatcher = request.getRequestDispatcher("docprofile.jsp");
 	   		  			requestDispatcher.forward(request, response);
 	   		  		}
