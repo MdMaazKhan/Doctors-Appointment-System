@@ -23,23 +23,17 @@ public class PatientDetails extends HttpServlet {
 		HttpSession session=request.getSession(false);  
 		
 		 try{  
-	   		  // Class.forName("com.mysql.jdbc.Driver");  
+	   		  
 	   		   Connection con=DriverManager.getConnection(  
-	   		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");
-	   		   
-	   		   
-	   		//select AppointmentNumber from Appointment where hn='fatima' and dn='rishi' order by AppointmentNumber DESC; 
-	   		   //"select * from DoctorsInfo where HospitalName='"+request.getParameter("hospitalname")+"'"
+	   		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");
 	   		   
 	   		PreparedStatement pst1=con.prepareStatement("select AppointmentNumber from Appointment where hn='"+(String)session.getAttribute("hname")+"' and dn='"+(String)session.getAttribute("ddname")+"' order by AppointmentNumber DESC");
 	   		ResultSet rs=pst1.executeQuery(); 
-	   		//int c=1;
-	   		//rs.next();
+	   		
 	   		int latestNumber=1;
 	   		if(rs.next()) {
 	   			latestNumber= rs.getInt(1)+1;
-	   			//pst1.setInt(4, rs.getInt(1)+1);
-	   			//System.out.println("not empty res set");
+	   			
 	   			}
 	   		
 	   		
@@ -49,12 +43,7 @@ public class PatientDetails extends HttpServlet {
 	   		String pp=request.getParameter("PatientProblem");
 	   		String ppn=request.getParameter("PatientPhoneNumber");
 	   		
-//	   		System.out.println(session.getAttribute("hname"));
-//	   		System.out.println(session.getAttribute("ddname"));
-//	   		System.out.println(session.getAttribute("AOE"));
-//	   		System.out.println(session.getAttribute("time"));
-//	   		  int c=0;
-	   	
+//	   		
 	   		
 	   		
 	   	 PreparedStatement pst=con.prepareStatement(" insert into Appointment (pn,pp,PhnNumber,AppointmentNumber,hn,dn,aoe,t)"
