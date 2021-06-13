@@ -22,42 +22,31 @@ public class GoToDoctors extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String dname=request.getParameter("dname");
-//   		System.out.println(dname00);
-//
+		
 		 HttpSession session=request.getSession(false);  
-//   		System.out.println(request.getAttribute("dname"));
-  		//System.out.println(session.getAttribute("hname"));
-//   		System.out.println(request.getParameter("hname"));
-		 
-		 
-//		
+
 		
 		 try{  
-	   		  // Class.forName("com.mysql.jdbc.Driver");  
+	   		  
 	   		   Connection con=DriverManager.getConnection(  
-	   		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777"); 
+	   		   "jdbc:mysql://localhost:3306/doctorsdb","root","root"); 
 	   		String ddname=request.getParameter("dname");
 	   		 String sql="select AreaOfExpertise,Timings from DoctorsInfo where HospitalName='"+session.getAttribute("hname")+"' and DoctorName='"+ddname+"'";
 	  		  PreparedStatement pst=con.prepareStatement(sql);
 	  		   ResultSet rs=pst.executeQuery();  rs.next();
 		   		
-	  		// System.out.println(rs.getString(1)+"  "+rs.getString(2));
+	  		
 	  		   String aoe=rs.getString(1);
 	  		   String time=rs.getString(2);
 	  		   
 	   		
-	   	//	System.out.println(ddname);
+	   	
 	   		   request.setAttribute("ddname", ddname);
 	   		request.setAttribute("hname", session.getAttribute("hname"));
-	   	 request.setAttribute("AOE", aoe);
-	   	 request.setAttribute("time", time);
+	   	 	request.setAttribute("AOE", aoe);
+	   	 	request.setAttribute("time", time);
 	   		
-//	   		String PatientName=request.getParameter(" PatientName");
-//	   		String PatientProblem=request.getParameter("PatientProblem");
-//	   	 request.setAttribute("pn", PatientName);
-//	   	request.setAttribute("pp", PatientProblem);
-//	   		
+   		
 	   		session.setAttribute("ddname", ddname);
 	   		session.setAttribute("AOE", aoe);
 	   		session.setAttribute("time", time);
