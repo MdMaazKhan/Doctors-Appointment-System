@@ -21,29 +21,13 @@ public class GoToDoctors extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-//		String dname=request.getParameter("dname");
-//   		System.out.println(dname);
-//
+
 		 HttpSession session=request.getSession(false);  
-		// session.setAttribute("dname", request.getParameter("dname"));
- // 		System.out.println(request.getAttribute("dname"));
-  		//System.out.println(session.getAttribute("hname"));
-//   		System.out.println(request.getParameter("hname"));
+		
 		 
-		 
-//		
-		 //String aoe="",time="";
 		 try{  
-			 	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777"); 
-//			 	String sql="select * from DoctorsInfo where HospitalName='"+session.getAttribute("hname")+"' and Doctorname='"+request.getParameter("dname") +"'";            
-//			 	PreparedStatement pst=con.prepareStatement(sql);
-//			 	ResultSet rs=pst.executeQuery();  
-//			 	if(rs.next())
-//			 	{	
-//			 		aoe=rs.getString(4);
-//			 		time=rs.getString(5);
-//			 	}
-				
+			 	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/doctorsdb","root","root"); 
+
    		   
 			 	session.setAttribute("HosName", request.getParameter("HosName"));
 			 	session.setAttribute("DocName", request.getParameter("DocName"));
