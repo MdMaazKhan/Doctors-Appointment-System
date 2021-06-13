@@ -24,11 +24,10 @@ public class RegisterYourHospital extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		 try{  
-   		  // Class.forName("com.mysql.jdbc.Driver");  
-   		   Connection con=DriverManager.getConnection(  
-   		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");  
-   		   //String dname=request.getParameter("doctorname");
-   		// HttpSession session=request.getSession(false);  
+   		  ; 
+   		   Connection con =DriverManager.getConnection(  
+   		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");  
+   		   
    		  PreparedStatement pst=con.prepareStatement(" insert into DoctorsInfo (HospitalName,DoctorName,AreaOfExpertise,Timings)"
    		        + " values (?, ?, ?, ?)");
    		  pst.setString(1, request.getParameter("hospitalnamenew"));
@@ -36,9 +35,7 @@ public class RegisterYourHospital extends HttpServlet {
    		  pst.setString(3, request.getParameter("aoe"));
    		  pst.setString(4, request.getParameter("timings"));
    		  int t=pst.executeUpdate();
-//   		  
-//   		  session.setAttribute("time", request.getParameter("timings"));
-//   		session.setAttribute("AOE", request.getParameter("aoe"));
+
    		  
    		  if(t!=0) {
    			 RequestDispatcher requestDispatcher = request.getRequestDispatcher("index.jsp");
