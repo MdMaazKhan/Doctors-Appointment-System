@@ -22,19 +22,14 @@ import javax.servlet.http.HttpSession;
 public class GetDoctors extends HttpServlet {
 	
        protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	  // System.out.println("in GetDoctors "+request.getParameter("hospitalname") );
+    	  
     	   try{  
-    		  // Class.forName("com.mysql.jdbc.Driver");  
+    		   
     		   Connection con=DriverManager.getConnection(  
-    		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");  
+    		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");  
     		 String sql="select * from DoctorsInfo where HospitalName='"+request.getParameter("hospitalname")+"'";
     		  PreparedStatement pst=con.prepareStatement(sql);
     		   ResultSet rs=pst.executeQuery();  
-    		   //request.setAttribute("res", rs);
-//    		   ArrayList<String> hn=new ArrayList<String>();
-//    		   ArrayList<String> dn=new ArrayList<String>();
-//    		   ArrayList<String> aoe=new ArrayList<String>();
-//    		   ArrayList<String> time=new ArrayList<String>();
     		   HttpSession session=request.getSession(false);  
     		  String hname=request.getParameter("hospitalname");
     		  session.setAttribute("hname", hname);
@@ -46,7 +41,7 @@ public class GetDoctors extends HttpServlet {
     		   
     		  
     		     for(int i=0;i<rows;i++) {
-    		    	// if(!rs.next())break;
+    		    	
     			     for(int j=0;j<4;j++) {
     				   arr[i][j]=rs.getString(j+2);
     			     }
@@ -55,22 +50,9 @@ public class GetDoctors extends HttpServlet {
     		     
     		   
     		   
-//    		   while(rs.next())
-//    		   {
-//    		   al.add(alNew.add(rs.getString(2))+"  "+alNew.add(rs.getString(3))+"  "+alNew.add(rs.getString(4))+"  "+alNew.add(rs.getString(5)));
-//    		   hn.add(rs.getString(2));
-//    		   dn.add(rs.getString(3));
-//    		   aoe.add(rs.getString(4));
-//    		   time.add(rs.getString(5));
-//    		   
-//    		   }
     		   
-//    		   request.setAttribute("res1", hn);
-//    		   request.setAttribute("res2", dn);
-//    		   request.setAttribute("res3", aoe);
     		   request.setAttribute("res", arr);
-    		   //System.out.println(hn);
-    		   //System.out.println("dn");
+    		   
     		   
         	   
     		   con.close();  
@@ -83,6 +65,6 @@ public class GetDoctors extends HttpServlet {
            requestDispatcher.forward(request, response);
             
     		     
-	}//"select * from DoctorsInfo where HospitalName='"+request.getParameter("hospitalname")+"'"
+	}
 
 }
