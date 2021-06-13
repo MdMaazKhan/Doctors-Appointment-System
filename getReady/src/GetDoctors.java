@@ -27,7 +27,7 @@ public class GetDoctors extends HttpServlet {
     	   try{  
     		 
     		   Connection con=DriverManager.getConnection(  
-    		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");  
+    		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");  
     		   String sql="select * from DoctorsInfo where HospitalName='"+request.getParameter("hospitalname")+"'";
     		   PreparedStatement pst=con.prepareStatement(sql);
     		   ResultSet rs=pst.executeQuery();  
@@ -43,7 +43,7 @@ public class GetDoctors extends HttpServlet {
     		   
     		  
     		     for(int i=0;i<rows;i++) {
-    		    	// if(!rs.next())break;
+    		    	
     			     for(int j=0;j<4;j++) {
     				   arr[i][j]=rs.getString(j+2);
     			     }
