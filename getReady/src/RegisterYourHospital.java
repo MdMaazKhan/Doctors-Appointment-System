@@ -22,11 +22,11 @@ public class RegisterYourHospital extends HttpServlet {
     
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println(request.getParameter("pass"));
+		
 		 try{  
    		   
    		   Connection con=DriverManager.getConnection(  
-   		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");  
+   		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");  
    		   String dname=request.getParameter("doctorname");
    		
    		  PreparedStatement pst=con.prepareStatement(" insert into DoctorsInfo (HospitalName,DoctorName,AreaOfExpertise,Timings,password)"
