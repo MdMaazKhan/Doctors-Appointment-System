@@ -20,7 +20,7 @@ public class DocLogin extends HttpServlet {
 		
 		try {
 				 Connection con=DriverManager.getConnection(  
-	    		   "jdbc:mysql://localhost:3306/doctorsdb","root","Maaz@Khan777");  
+	    		   "jdbc:mysql://localhost:3306/doctorsdb","root","root");  
 	    		 String sql="Select * from DoctorsInfo where HospitalName='"+request.getParameter("hosname").replaceAll("\'", "")+"' and DoctorName='"+request.getParameter("docname") +"' and password='"+ request.getParameter("pswd") +"'";                           
 	    		  PreparedStatement pst=con.prepareStatement(sql);
 	    		   ResultSet rs=pst.executeQuery();  
@@ -32,7 +32,7 @@ public class DocLogin extends HttpServlet {
 	        		  session.setAttribute("AOE",rs.getString(4));
 	        		  session.setAttribute("timings", rs.getString(5));
 	        		  
-	        		  //String sql1="SELECT AppointmentNumber,pn,pp,phnNumber FROM appointment where hn='"+ request.getParameter("hosname").replaceAll("\'", "") +"' and dn='"+ request.getParameter("docname") +"' order by AppointmentNumber desc";
+	        		  
 	        		  String sq  ="SELECT pn,pp,phn,count(AppNo) FROM appointment where HosName='"+ request.getParameter("hosname").replaceAll("\'", "") +"' and DocName='"+ request.getParameter("docname") +"' order by AppNo";
 	        		  
 	        		  pst=con.prepareStatement(sq);
@@ -55,13 +55,6 @@ public class DocLogin extends HttpServlet {
 	        		  
 	        		  
 	        		  
-	        		  
-//	    			  request.setAttribute("phospitalname", rs.getString(2));
-//	    			  request.setAttribute("pdoctorname", rs.getString(3));
-//	    			  request.setAttribute("pareaofexpertise", rs.getString(4));
-//	    			  request.setAttribute("ptimings", rs.getString(5));
-//	    			  request.setAttribute("pnoofpatients", rs.getString(7));
-	    			 //String s= rs.getString(1);
 	    			  RequestDispatcher requestDispatcher = request.getRequestDispatcher("docprofile.jsp");
 	    	   			 requestDispatcher.forward(request, response);
 	    		  }
