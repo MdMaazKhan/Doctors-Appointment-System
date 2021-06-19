@@ -21,11 +21,11 @@ The project is divided in two seperate modules<br>
 * Doctors have to login into their portal.
 * Doctors can see the number of patients in the queue for today.
 * The current patient would be displayed on the screen with his/her details.
-* Doctor can decrease the current patient to visit the next patient in the queue.<br><br>
+* Doctor can decrease the current patient and attend the next in the queue.<br><br>
 ![DocTemplate](https://user-images.githubusercontent.com/71049595/122643362-0efb0f00-d12d-11eb-833e-e9d732ecc0a2.png)<br><br>
 
 ## Synchronization of modules
-As the doctor will **decrease** the patient in his profile, The doctors template page for patients would be synchronized and hence simultaneously it will decrease the number of patients in real time. Similarly if any patient has taken an appointment his data would be stored in real time to the doctors profile and the number of patients in the queue will also be increased by one.
+As the doctor will **decrease** the patient in his profile, The doctors template page for patients would be synchronized and hence simultaneously it will decrease the number of patients in real time. Similarly if any patient has taken an appointment his data would be stored in real time to the doctors profile and the number of patients in the queue will also be **increased** by one.
 
 ## Other Points
 * Doctors have to register.
